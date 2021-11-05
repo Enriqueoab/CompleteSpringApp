@@ -4,7 +4,7 @@
 
 I used this version [`https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104`](AWS library).
 
-What we have to do is copy the dependency instruction and pasted in our file [`./demo\pom.xml`](pom.xml) inside the dependencies tag, like so:
+What we have to do is copy the dependency instruction and pasted in our file [`./demo/pom.xml`](pom.xml) inside the dependencies tag, like so:
 
 ```
 		<dependency>
