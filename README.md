@@ -20,7 +20,7 @@ What we have to do is copy the dependency instruction and pasted in our file [`p
 
 We have to open our AWS console account and go to My account and click in My Security Credentials. In the section "Access keys" we have to create one and download the file.
 
-![alt text](./img/create-aws-access-key.png)
+![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/create-aws-access-key.png.png)
 
 Now we have to write the java code needed to create a intance of the amazon S3 client and be able to interact with buckets. We are going to create a class called [`awsCloudServiceConfig`](demo\src\main\java\com\LearningApp\demo\config\awsCloudServiceConfig.java) and build our S3 client with the code shown below:
 
@@ -41,3 +41,31 @@ Now we have to write the java code needed to create a intance of the amazon S3 c
     }
 ```
 ## 3. Creating the bucket to store our app data
+
+In our AWS account we have to choose the S3 service and create a bucket, make sure that the bucket's name is unique otherwise it won't work.
+Once it's created we can see something like so:
+
+![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/CreationAwsBucket.png)
+
+To keep our code organized we are going to create a package (bucket) and inside it we are going to create a class called [`AwsBucketName`](demo\src\main\java\bucket\AwsBucketName.java) to store the name of our S3 bucket, that way if we change it in the future we would have to change just the value in this class:
+
+
+ ```ruby
+		package bucket;
+
+		public enum AwsBucketName {
+			
+			
+			BUCKET_NAME("mycompleteapplicationawsbucket0511");
+			private final String bucketName;
+
+			private AwsBucketName(String bucketName) {
+				this.bucketName = bucketName;
+			}
+			
+			public String getBucketName() {
+				return bucketName;
+			}
+
+		}
+```
