@@ -2,7 +2,7 @@
 
 ## 1. We have to get the dependency of AWS for out project
 
-I used this version ![alt text](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104).
+I used this version [`1.12.104`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104).
 
 What we have to do is copy the dependency instruction and pasted in our file [`pom.xml`](demo/pom.xml) inside the dependencies tag, like so:
 
