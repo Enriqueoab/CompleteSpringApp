@@ -6,7 +6,7 @@ I used this version [`1.12.104`](https://mvnrepository.com/artifact/com.amazonaw
 
 What we have to do is copy the dependency instruction and pasted in our file [`pom.xml`](demo/pom.xml) inside the dependencies tag, like so:
 
-```
+```ruby
 	<dependency>
 		<groupId>com.amazonaws</groupId>
 		<artifactId>aws-java-sdk</artifactId>
@@ -20,7 +20,7 @@ We have to open our AWS console account and go to My account and click in My Sec
 
 Now we have to write the java code needed to create a intance of the amazon S3 client and be able to interact with buckets. We are going to create a class called [`awsCloudServiceConfig`](demo\src\main\java\com\LearningApp\demo\config\awsCloudServiceConfig.java) and build our S3 client with the code shown below:
 
-```
+```ruby
 	//Creation of the S3 client
 	@Bean //Instance of this clase to be injected in others classes (IoC container)
 
