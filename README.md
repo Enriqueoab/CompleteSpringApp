@@ -1,8 +1,10 @@
 #  Complete application with Spring, Amazon S3, and React:
 
-## 1. We have to get the dependency of AWS for out project
+In this application I have learned how to create an aws S3 client, how to set and how work some of the Spring annotations so far
 
-I used this version [`1.12.104`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104).
+## 1. We have to get the dependency of AWS for our project
+
+I used this version [`1.12.104`] we can get the dependency tag from [´here´](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104).
 
 What we have to do is copy the dependency instruction and pasted in our file [`pom.xml`](demo/pom.xml) inside the dependencies tag, like so:
 
@@ -17,6 +19,8 @@ What we have to do is copy the dependency instruction and pasted in our file [`p
 ## 2. AWS credentials, connect our server to amazon
 
 We have to open our AWS console account and go to My account and click in My Security Credentials. In the section "Access keys" we have to create one and download the file.
+
+![alt text](img/create-aws-access-key.png)
 
 Now we have to write the java code needed to create a intance of the amazon S3 client and be able to interact with buckets. We are going to create a class called [`awsCloudServiceConfig`](demo\src\main\java\com\LearningApp\demo\config\awsCloudServiceConfig.java) and build our S3 client with the code shown below:
 
