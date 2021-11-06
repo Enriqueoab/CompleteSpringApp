@@ -1,4 +1,4 @@
-#  Complete application with Spring, Amazon S3, and React:
+#  Complete application with Spring, Amazon S3 and React:
 
 In this application I have learned how to create an aws S3 client, how to set and how work some of the Spring annotations so far
 
@@ -68,4 +68,38 @@ To keep our code organized we are going to create a package (bucket) and inside 
 			}
 
 		}
+```
+
+## 4. Implement the S3 bucket to save our data
+
+First we are going to create a class called [`FileStore`](demo\src\main\java\fileStore\FileStore.java) inside of the fileStore package to keep the code tidy.
+This class is going to use, thanks to Spring, throught injections the class [`awsCloudServiceConfig`](demo\src\main\java\com\LearningApp\demo\config\awsCloudServiceConfig.java) to have access to our S3 bucket and save any kind of data of our app.
+
+This method allow us to saves files in Amazon S3:
+
+ ```ruby
+    //The object optionalMetadata will serve as the metadata that
+    //we can pass to store images or files
+    //<contentTime, contentLength>
+    //inStream is what gets save in S3
+    public void save(String path, String fileName,
+    Optional<Map<String,String>> optionalMetadata,
+    InputStream inStream)
+    {
+
+        ObjectMetadata metadata = new ObjectMetadata();
+        optionalMetadata.ifPresent(map -> {
+            if (!map.isEmpty()) {
+                map.forEach((key, value) -> metadata.addUserMetadata(key, value));
+            }
+        });
+
+        try {
+            s3.putObject(path, fileName, inStream, metadata);
+        } catch (AmazonServiceException ase) {
+            throw new IllegalStateException("S3 store failed: ",ase);
+        }
+
+
+    }
 ```
