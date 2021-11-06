@@ -22,7 +22,7 @@ We have to open our AWS console account and go to My account and click in My Sec
 
 ![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/create-aws-access-key.png.png)
 
-Now we have to write the java code needed to create a intance of the amazon S3 client and be able to interact with buckets. We are going to create a class called [`awsCloudServiceConfig`](demo\src\main\java\com\LearningApp\demo\config\awsCloudServiceConfig.java) and build our S3 client with the code shown below:
+Now we have to write the java code needed to create a intance of the amazon S3 client and be able to interact with buckets. We are going to create a class called [`awsCloudServiceConfig`](demo/src/main/java/com/LearningApp/demo/config/awsCloudServiceConfig.java) and build our S3 client with the code shown below:
 
 ```ruby
 	//Creation of the S3 client
