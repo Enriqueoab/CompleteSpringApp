@@ -1,4 +1,4 @@
-package bucket;
+package com.LearningApp.demo.bucket;
 
 public enum AwsBucketName {
     

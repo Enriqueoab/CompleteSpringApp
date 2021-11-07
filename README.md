@@ -141,8 +141,23 @@ Now we are going to create a class, in the "profile" package, as the controller 
 
 [UserService](demo/src/main/java/profile/UserService.java)
 
+**@Service**, marks a Java class that performs some service, such as executing business logic, performing calculations, and calling external APIs.
+
 ### 6.4
 
 [UserDataAccessService](demo/src/main/java/profile/UserDataAccessService.java)
 
 **@Autowired**, can be used to autowire bean on the setter method just like @Required annotation, constructor, a property or methods with arbitrary names and/or multiple arguments.
+
+## 7. Starting the frontend (React)
+
+The client will be written in react and we will get and post request to our API.
+We can bootstrap our react frontend with the comands below:
+
+ ```ruby
+		npx create-react-app name
+		cd my-app
+		npm start
+```
+With these commands we are going to run the server and automatically is going to open a localhost window showing us what we get using the bootstrap react.
+Now we have to change it in order to get the elements that we need for out app

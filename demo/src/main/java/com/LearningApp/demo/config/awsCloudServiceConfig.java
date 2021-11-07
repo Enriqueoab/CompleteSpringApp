@@ -14,7 +14,6 @@ public class awsCloudServiceConfig {
 
 //Creation of the S3 client
 @Bean //Instance of this clase to be injected in others classes (IoC container)
-
 public AmazonS3 aznS3(){
 
     AWSCredentials cloudCredentials = new BasicAWSCredentials(
@@ -23,6 +22,7 @@ public AmazonS3 aznS3(){
 
         return AmazonS3ClientBuilder
         .standard()
+        .withRegion("EU_WEST_1")
         .withCredentials(new AWSStaticCredentialsProvider(cloudCredentials))
         .build();
     }

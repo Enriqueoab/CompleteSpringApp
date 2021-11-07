@@ -1,4 +1,4 @@
-package datastore;
+package com.LearningApp.demo.datastore;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import org.springframework.stereotype.Repository;
 
-import profile.UserProfile;
+import com.LearningApp.demo.profile.UserProfile;
 
 @Repository
 public class TestUserProfie {

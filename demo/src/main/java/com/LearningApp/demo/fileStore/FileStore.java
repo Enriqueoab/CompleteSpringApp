@@ -1,4 +1,4 @@
-package fileStore;
+package com.LearningApp.demo.fileStore;
 
 import java.io.InputStream;
 import java.util.Map;

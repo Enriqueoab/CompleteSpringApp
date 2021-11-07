@@ -1,11 +1,11 @@
-package profile;
+package com.LearningApp.demo.profile;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import datastore.TestUserProfie;
+import com.LearningApp.demo.datastore.TestUserProfie;
 
 @Repository
 public class UserDataAccessService {
