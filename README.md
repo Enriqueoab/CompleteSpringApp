@@ -217,9 +217,13 @@ Now we are going to create a functional component whitch, with the help of Axios
 		</div>
 	);
 ```
-Now if we run our frontend [`npm start`] and our backend [`DemoApplication.java`:arrow_forward:] we should see, inspecting the front end web, that we have a erros related with CORS policy which is caused when an application is trying to communicate with a backend on a different host, this prevent malicious attacks.
+Now if we run our frontend `npm start` and our backend `DemoApplication.java`:arrow_forward: we should see, inspecting the front end web, that we have a erros related with CORS policy which is caused when an application is trying to communicate with a backend on a different host, this prevent malicious attacks.
 
 ![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/different-host-error.png)
 
 In order to accept the request from our React host (http://localhost:3000)
-we are going to add the tag [`@CrossOrigin("http://localhost:3000")`] to our [`UserController`](demo/src/main/java/com/LearningApp/demo/profile/UserController.java). We could allow the request from anywhere setting the tag to [`*`] but is not a good practice if we are thinking in a production step.
+we are going to add the tag `@CrossOrigin("http://localhost:3000")` to our [`UserController`](demo/src/main/java/com/LearningApp/demo/profile/UserController.java). We could allow the request from anywhere setting the tag to `*` but is not a good practice if we are thinking in a production step. If all was right we should, run again the back end, and see the data in the console inspector, as so:
+
+![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/different-host-error-fixed-show-data.png)
+
+## 9. Show the data received
