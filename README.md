@@ -50,7 +50,7 @@ Once it's created we can see something like so:
 
 ![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/CreationAwsBucket.png)
 
-To keep our code organized we are going to create a package (bucket) and inside it we are going to create a class called [`AwsBucketName`](demo/src/main/java/bucket/AwsBucketName.java) to store the name of our S3 bucket, that way if we change it in the future we would have to change just the value in this class:
+To keep our code organized we are going to create a package (bucket) and inside it we are going to create a class called [`AwsBucketName`](demo/src/main/java/com/LearningApp/demo/bucket/AwsBucketName.java) to store the name of our S3 bucket, that way if we change it in the future we would have to change just the value in this class:
 
 
  ```ruby
@@ -75,7 +75,7 @@ To keep our code organized we are going to create a package (bucket) and inside 
 
 ## 4. Implement the S3 bucket to save our data
 
-First we are going to create a class called [`FileStore`](demo/src/main/java/fileStore/FileStore.java) inside of the fileStore package to keep the code tidy.
+First we are going to create a class called [`FileStore`](demo/src/main/java/com/LearningApp/demo/fileStore/FileStore.java) inside of the fileStore package to keep the code tidy.
 This class is going to use, thanks to Spring, throught injections the class [`awsCloudServiceConfig`](demo/src/main/java/com/LearningApp/demo/config/awsCloudServiceConfig.java) to have access to our S3 bucket and save any kind of data of our app.
 
 This method allow us to saves files in Amazon S3:
@@ -109,7 +109,7 @@ This method allow us to saves files in Amazon S3:
 
 ## 5. Creating package and user class
 
-First we are going to create the package profile and inside we have to create the class [`UserProfile`](demo/src/main/java/profile/UserProfile.java).
+First we are going to create the package profile and inside we have to create the class [`UserProfile`](demo/src/main/java/com/LearningApp/demo/profile/UserProfile.java).
 
 In this class we have to create three atributes userImageLink, username, userId and its setter and getters the class constructor and the hashcode equals override function. **Make sure that the getter of "userImageLink" handle properly a null value using Optional object, like so:
 
@@ -123,13 +123,13 @@ In this class we have to create three atributes userImageLink, username, userId 
 
 ## 6. Creating the api to the requests of our app
 
-we are going to create a class called [TestUserProfile](demo/src/main/java/datastore/TestUserProfie.java) and set a function to create a couple of user profiles.
+we are going to create a class called [`TestUserProfile`](demo/src/main/java/com/LearningApp/demo/datastore/TestUserProfie.java) and set a function to create a couple of user profiles.
 
 **@Repository** is a annotation used to indicate that the class provides the mechanism for storage, retrieval, search, update and delete operation on objects.
 
 ### 6.2 
 
-Now we are going to create a class, in the "profile" package, as the controller called [UserController](demo/src/main/java/profile/UserController.java)
+Now we are going to create a class, in the "profile" package, as the controller called [`UserController`](demo/src/main/java/com/LearningApp/demo/profile/UserController.java)
 
 **[@RestController]**, this annotation is applied to a class to mark it as a request handler. Spring RestController annotation is used to create RESTful web services using Spring MVC.
 
@@ -139,13 +139,13 @@ Now we are going to create a class, in the "profile" package, as the controller 
 
 ### 6.3
 
-[UserService](demo/src/main/java/profile/UserService.java)
+[UserService](demo/src/main/java/com/LearningApp/demo/profile/UserService.java)
 
 **@Service**, marks a Java class that performs some service, such as executing business logic, performing calculations, and calling external APIs.
 
 ### 6.4
 
-[UserDataAccessService](demo/src/main/java/profile/UserDataAccessService.java)
+[UserDataAccessService](demo/src/main/java/com/LearningApp/demo/profile/UserDataAccessService.java)
 
 **@Autowired**, can be used to autowire bean on the setter method just like @Required annotation, constructor, a property or methods with arbitrary names and/or multiple arguments.
 
@@ -217,4 +217,9 @@ Now we are going to create a functional component whitch, with the help of Axios
 		</div>
 	);
 ```
-Now if we run our frontend [npm start] and our backend [DemoApplication.java:arrow_forward:]	
+Now if we run our frontend [`npm start`] and our backend [`DemoApplication.java`:arrow_forward:] we should see, inspecting the front end web, that we have a erros related with CORS policy which is caused when an application is trying to communicate with a backend on a different host, this prevent malicious attacks.
+
+![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/different-host-error.png)
+
+In order to accept the request from our React host (http://localhost:3000)
+we are going to add the tag [`@CrossOrigin("http://localhost:3000")`] to our [`UserController`](demo/src/main/java/com/LearningApp/demo/profile/UserController.java). We could allow the request from anywhere setting the tag to [`*`] but is not a good practice if we are thinking in a production step.
