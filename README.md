@@ -131,7 +131,7 @@ we are going to create a class called [TestUserProfile](demo/src/main/java/datas
 
 Now we are going to create a class, in the "profile" package, as the controller called [UserController](demo/src/main/java/profile/UserController.java)
 
-**@RestController**, this annotation is applied to a class to mark it as a request handler. Spring RestController annotation is used to create RESTful web services using Spring MVC.
+**[@RestController]**, this annotation is applied to a class to mark it as a request handler. Spring RestController annotation is used to create RESTful web services using Spring MVC.
 
 **@RequestMapping("api/v1/user-profile")**, we use the @RequestMapping annotation to map URLs such as /appointments onto an entire class or a particular handler method.
 
@@ -155,9 +155,66 @@ The client will be written in react and we will get and post request to our API.
 We can bootstrap our react frontend with the comands below:
 
  ```ruby
-		npx create-react-app name
-		cd my-app
+		npx create-react-app name-app
+		cd name-app
 		npm start
 ```
-With these commands we are going to run the server and automatically is going to open a localhost window showing us what we get using the bootstrap react.
-Now we have to change it in order to get the elements that we need for out app
+With these commands we are going to run the server and automatically should open a localhost window showing us what we get using the bootstrap react.
+Now we have to change it in order to get the elements that we need for out app.
+
+## 8.  React component and Axios
+
+To start modifying the react frontend web page we have to open the [`app.js`](demo/src/main/frontendeact/src/App.js) file which is inside the file that we just created in the step before.
+
+### 8.1 Axios dependency
+
+The first step is delete the Header tag (the tag included) and download the Axios dependency which is going to allow us to make HTTP requests to the backend of our app, to achive that we have to use the command below, make sure we are in the frontend folder created before:
+
+ ```ruby
+	...\main\frontendeact> npm -S i axios
+```
+We should be able to see the new dependency in our [`package.json`](demo/src/main/frontendeact/package.json) file like so:
+
+![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/axios-dependency.png)
+
+Now, in our [`app.js`](demo/src/main/frontendeact/src/App.js), we just have to import the axios and some React dependencies. Our imports should looks like so:
+
+ ```ruby
+	import React, {usesState, useEffect} from "react";
+	import logo from './logo.svg';
+	import './App.css';
+	import axios from "axios";
+```
+
+### 8.1 HTTP requests
+
+Now we are going to create a functional component whitch, with the help of Axios, is going to allow us to make request to our backend, the function looks like so:
+
+ ```ruby
+	const UserProfiles = () => {
+
+	const fetchUserProfiles = () => {
+		axios.get("http://localhost:8080/api/v1/user-profile").then(res =>{console.log(res);
+		});
+	}
+	useEffect(() => {
+		fetchUserProfiles();
+
+	}, []);
+	return <h1>Hi</h1>
+	};
+```
+
+...and the body of our app should like so:
+
+ ```ruby
+	function App() {
+	return (
+		<div className="App">
+		
+		<UserProfiles/>
+		
+		</div>
+	);
+```
+Now if we run our frontend [npm start] and our backend [DemoApplication.java:arrow_forward:]	
