@@ -227,3 +227,57 @@ we are going to add the tag `@CrossOrigin("http://localhost:3000")` to our [`Use
 ![alt text](https://github.com/Enriqueoab/CompleteSpringApp/blob/main/img/different-host-error-fixed-show-data.png)
 
 ## 9. Show the data received
+
+### 9.1 Create the state variable
+
+In order to have our variables updated we are going to use a `Hook` which  is a react function that lets you use state and react features from a function based component.
+
+In this case we are using `useState` which allows us to have state variables in functional components. You pass the initial state to this function and it returns a variable with the current state value (not necessarily the initial state) and another function to update this value.
+
+ ```ruby
+	const [userProfiles, setUserProfiles] = useState([]);
+```
+
+
+As our backend response contains the data property we can just access to it and set the value to our cons:
+
+ ```ruby
+	const fetchUserProfiles = () => {
+		axios.get("http://localhost:8080/api/v1/user-profile").then(res =>{console.log(res);
+		
+		const data = res.data;
+		setUserProfiles(data);
+		});
+	}
+	);
+```
+
+...and our component would end looking like so:
+
+ ```ruby
+	const UserProfiles = () => {
+
+	const [userProfiles, setUserProfiles] = useState([]);
+
+	const fetchUserProfiles = () => {
+		axios.get("http://localhost:8080/api/v1/user-profile").then(res =>{console.log(res);
+		
+		const data = res.data;
+		setUserProfiles(data);
+	});
+	}
+	useEffect(() => {
+		fetchUserProfiles();
+
+	}, []);
+	return userProfiles.map((userProfile,index) =>{
+		return (
+			<div key={index}>
+				<h1>{userProfile.username}</h1>
+				<p>{userProfile.userId}</p>
+			</div>
+		)
+	})  
+	};
+```
+
