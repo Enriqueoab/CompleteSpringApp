@@ -5,7 +5,7 @@ In this application I have learned how to create an aws S3 client, how to set an
 
 ## 1. We have to get the dependency of AWS for our project
 
-I used this version [`1.12.104`] we can get the dependency tag from [`here`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104).
+I used this version `1.12.104` we can get the dependency tag from [`here`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.12.104).
 
 What we have to do is copy the dependency instruction and pasted in our file [`pom.xml`](demo/pom.xml) inside the dependencies tag, like so:
 
@@ -131,23 +131,23 @@ we are going to create a class called [`TestUserProfile`](demo/src/main/java/com
 
 Now we are going to create a class, in the "profile" package, as the controller called [`UserController`](demo/src/main/java/com/LearningApp/demo/profile/UserController.java)
 
-**[@RestController]**, this annotation is applied to a class to mark it as a request handler. Spring RestController annotation is used to create RESTful web services using Spring MVC.
+**`@RestController`**, this annotation is applied to a class to mark it as a request handler. Spring RestController annotation is used to create RESTful web services using Spring MVC.
 
-**@RequestMapping("api/v1/user-profile")**, we use the @RequestMapping annotation to map URLs such as /appointments onto an entire class or a particular handler method.
+**`@RequestMapping("api/v1/user-profile")`**, we use the @RequestMapping annotation to map URLs such as /appointments onto an entire class or a particular handler method.
 
-**@GetMapping**, maps HTTP GET requests onto specific handler methods.
+**`@GetMapping`**, maps HTTP GET requests onto specific handler methods.
 
 ### 6.3
 
 [UserService](demo/src/main/java/com/LearningApp/demo/profile/UserService.java)
 
-**@Service**, marks a Java class that performs some service, such as executing business logic, performing calculations, and calling external APIs.
+**`@Service`**, marks a Java class that performs some service, such as executing business logic, performing calculations, and calling external APIs.
 
 ### 6.4
 
 [UserDataAccessService](demo/src/main/java/com/LearningApp/demo/profile/UserDataAccessService.java)
 
-**@Autowired**, can be used to autowire bean on the setter method just like @Required annotation, constructor, a property or methods with arbitrary names and/or multiple arguments.
+**`@Autowired`**, can be used to autowire bean on the setter method just like @Required annotation, constructor, a property or methods with arbitrary names and/or multiple arguments.
 
 ## 7. Starting the frontend (React)
 
