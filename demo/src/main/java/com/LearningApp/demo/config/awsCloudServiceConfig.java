@@ -17,8 +17,8 @@ public class awsCloudServiceConfig {
 public AmazonS3 aznS3(){
 
     AWSCredentials cloudCredentials = new BasicAWSCredentials(
-        "AKIAWCFEFT2GB7BUVHTE",
-        "e7IU7jfrtyv7eNeGRc2yXH1hwC8kv6SKiZJn1YQW");
+        "key",
+        "secretKey");
 
         return AmazonS3ClientBuilder
         .standard()

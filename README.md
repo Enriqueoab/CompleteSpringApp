@@ -33,8 +33,8 @@ Now we have to write the java code needed to create a intance of the amazon S3 c
 	public AmazonS3 aznS3(){
 
 		AWSCredentials cloudCredentials = new BasicAWSCredentials(
-			"AKIAWCFEFT2GB7BUVHTE",
-			"e7IU7jfrtyv7eNeGRc2yXH1hwC8kv6SKiZJn1YQW");
+			"key",
+			"secretKey");
 
 			return AmazonS3ClientBuilder
 			.standard()
@@ -280,4 +280,4 @@ As our backend response contains the data property we can just access to it and 
 	})  
 	};
 ```
-
+## 10. React Dropzone library
