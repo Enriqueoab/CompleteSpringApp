@@ -285,24 +285,34 @@ As our backend response contains the data property we can just access to it and 
 Now we are going to use dropzone which is a library that allow us to send files to our server. To install the library we have to, in our react file, execute this command, `npm install --save react-dropzone`. Once we installed the library we have to import in our [`app.js`](demo/src/main/frontendeact/src/App.js) file{useCallback} from 'react' and {useDropzone} from 'react-dropzone', so now we can add the function below to our project:
 
  ```ruby
-		function MyDropfilezone() {
-		const onDrop = useCallback(acceptedFiles => {
-			const file = acceptedFiles[0];
-		console.log(file);
-		}, [])
-		const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+	function MyDropfilezone({userProfileId}) {
+	const onDrop = useCallback(acceptedFiles => {
+		const file = acceptedFiles[0];
+    console.log(file);
+    const formData = new FormData();
+    formData.append("file",file);
+    axios.post(`http://localhost:8080/api/v1/user-profile/${userProfileId}/image/upload`,
+    formData,
+    {
+      headers:{"Content-Type" : "multipart/form-data"}
+    }).then(()=>{
+      console.log("Successfull upload");
+    }).catch(err => {console.log(err);});
+    
+	}, []);
+	const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
-		return (
-			<div {...getRootProps()}>
-			<input {...getInputProps()} />
-			{
-				isDragActive ?
-				<p>Drop the files here ...</p> :
-				<p>Drag 'n' drop some files here, or click to select files</p>
-			}
-			</div>
-		)
-		}
+  return userProfiles.map((userProfile,index) =>{
+      return (
+          <div key={index}>
+            
+            <h1>{userProfile.username}</h1>
+            <p>{userProfile.userId}</p>
+            <MyDropfilezone userProfileId = {userProfile.userProfileId} />
+            <br/>
+          </div>
+      )
+  }) 
 ```
 ... and using the new component `MyDropfilezone` inside our main fucnction like so:
 
@@ -318,3 +328,11 @@ Now we are going to use dropzone which is a library that allow us to send files 
   }) 
 ```
 ...it is all set up to use the new feature.
+
+## 11. Logic to send files to backend
+
+The work flow it will be, the user upload the image using the front end and this image is going to land on our API and then it will pass throught the service and in the service will store them in our s3 bucket as well as the link of the image in the database.
+
+
+
+To be able to upload a heavy file as a img we have to override the default parameter of multipart max file size. we have to open the [`aplication.properties`](demo/src/main/resources/application.properties) file and in order to override the parameter we have write `spring.servlet.multipart.max-file-size=50MB`

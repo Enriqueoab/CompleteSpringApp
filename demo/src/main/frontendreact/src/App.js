@@ -26,19 +26,35 @@ const fetchUserProfiles = () => {
   return userProfiles.map((userProfile,index) =>{
       return (
           <div key={index}>
-            <MyDropfilezone/>
+            
             <h1>{userProfile.username}</h1>
             <p>{userProfile.userId}</p>
+            <MyDropfilezone userId = {userProfile.userId} />
+            <br/>
           </div>
       )
   })  
 };
 
-function MyDropfilezone() {
+function MyDropfilezone({userId}) {
 	const onDrop = useCallback(acceptedFiles => {
 		const file = acceptedFiles[0];
+
     console.log(file);
-	}, [])
+
+    const formData = new FormData();
+    formData.append("file",file);
+
+    axios.post(`http://localhost:8080/api/v1/user-profile/${userId}/image/upload`,
+    formData,
+    {
+      headers:{"Content-Type": "multipart/form-data"}
+    }).then(()=>{
+      console.log("Successful upload");
+    }).catch(err => {console.log(err);
+    });
+    
+	}, []);
 	const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
 	return (
