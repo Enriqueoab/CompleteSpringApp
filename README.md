@@ -281,3 +281,40 @@ As our backend response contains the data property we can just access to it and 
 	};
 ```
 ## 10. React Dropzone library
+
+Now we are going to use dropzone which is a library that allow us to send files to our server. To install the library we have to, in our react file, execute this command, `npm install --save react-dropzone`. Once we installed the library we have to import in our [`app.js`](demo/src/main/frontendeact/src/App.js) file{useCallback} from 'react' and {useDropzone} from 'react-dropzone', so now we can add the function below to our project:
+
+ ```ruby
+		function MyDropfilezone() {
+		const onDrop = useCallback(acceptedFiles => {
+			const file = acceptedFiles[0];
+		console.log(file);
+		}, [])
+		const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+
+		return (
+			<div {...getRootProps()}>
+			<input {...getInputProps()} />
+			{
+				isDragActive ?
+				<p>Drop the files here ...</p> :
+				<p>Drag 'n' drop some files here, or click to select files</p>
+			}
+			</div>
+		)
+		}
+```
+... and using the new component `MyDropfilezone` inside our main fucnction like so:
+
+ ```ruby
+  return userProfiles.map((userProfile,index) =>{
+      return (
+          <div key={index}>
+            <MyDropfilezone/>
+            <h1>{userProfile.username}</h1>
+            <p>{userProfile.userId}</p>
+          </div>
+      )
+  }) 
+```
+...it is all set up to use the new feature.

@@ -26,8 +26,8 @@ public UserService(UserDataAccessService userDataAccessService) {
     
 }
 
-/*void uploadUserImage(UUID userId, MultipartFile file) {
-    // 1. Check if image is not empty
+void uploadUserImage(UUID userId, MultipartFile file) {
+   /* // 1. Check if image is not empty
     isFileEmpty(file);
     // 2. If file is an image
     isImage(file);
@@ -47,10 +47,10 @@ public UserService(UserDataAccessService userDataAccessService) {
         user.setUserImageLink(filename);
     } catch (IOException e) {
         throw new IllegalStateException(e);
-    }
+    }*/
 
 }
-byte[] downloadUserProfileImage(UUID userProfileId) {
+/*byte[] downloadUserProfileImage(UUID userProfileId) {
     UserProfile user = getUserProfileOrThrow(userProfileId);
 
     String path = String.format("%s/%s",
